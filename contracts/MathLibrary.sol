@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity >=0.4.23 <0.6.0;
 
 library MathLibrary {
      function increment(uint _self) public pure returns (uint) {

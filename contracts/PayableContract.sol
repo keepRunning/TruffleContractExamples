@@ -1,7 +1,7 @@
-pragma solidity ^0.4.23;
+pragma solidity >=0.4.23 <0.6.0;
 
 contract PayableContract {
-    function () public payable {
+    function () external payable {
     }
     
     function getBalance() public view returns (uint) {

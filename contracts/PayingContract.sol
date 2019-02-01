@@ -1,11 +1,12 @@
-pragma solidity ^0.4.23;
+pragma solidity >=0.4.23 <0.6.0;
+
 import "contracts/PayableContract.sol";
 
 contract PayingContract {
 
-    function () public payable {}
+    function () external payable {}
 
-    function payPayableContract(address addr, uint amount) public {
+    function payPayableContract(address payable addr, uint amount) public {
         require(address(this).balance >= amount);
         addr.transfer(amount);
     }

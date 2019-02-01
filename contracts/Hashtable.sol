@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity >=0.4.23 <0.6.0;
 
 contract Hashtable {
     mapping(bytes32 => bytes32) public hashtable;

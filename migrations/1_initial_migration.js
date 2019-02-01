@@ -5,8 +5,8 @@ var Math1 = artifacts.require("./Math.sol");
 var SimpleModifier = artifacts.require("./SimpleModifier.sol");
 var InheritanceParent = artifacts.require("./InheritanceParent.sol");
 var InheritanceChild = artifacts.require("./InheritanceChild.sol");
-var PayableContract = artifacts.require("./PayableContract.sol")
-var PayingContract = artifacts.require("./PayingContract.sol")
+var PayableContract = artifacts.require("./PayableContract.sol");
+var PayingContract = artifacts.require("./PayingContract.sol"); 
 
 module.exports = function(deployer) {
   deployer.deploy(Migrations);
@@ -20,5 +20,4 @@ module.exports = function(deployer) {
   deployer.deploy(InheritanceChild);
   deployer.deploy(PayableContract);
   deployer.deploy(PayingContract);
-  
 };
