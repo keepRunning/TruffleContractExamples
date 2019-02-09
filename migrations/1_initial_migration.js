@@ -6,7 +6,10 @@ var SimpleModifier = artifacts.require("./SimpleModifier.sol");
 var InheritanceParent = artifacts.require("./InheritanceParent.sol");
 var InheritanceChild = artifacts.require("./InheritanceChild.sol");
 var PayableContract = artifacts.require("./PayableContract.sol");
-var PayingContract = artifacts.require("./PayingContract.sol"); 
+var PayingContract = artifacts.require("./PayingContract.sol");
+var ERC721 = artifacts.require("./ERC721/ERC721.sol");
+var ERC721Testable = artifacts.require("./ERC721/ERC721Testable.sol");
+var ERC721Receiver = artifacts.require("ERC721/ERC721Receiver.sol");
 
 module.exports = function(deployer) {
   deployer.deploy(Migrations);
@@ -20,4 +23,7 @@ module.exports = function(deployer) {
   deployer.deploy(InheritanceChild);
   deployer.deploy(PayableContract);
   deployer.deploy(PayingContract);
+  // deployer.deploy(ERC721);
+  deployer.deploy(ERC721Testable);
+  deployer.deploy(ERC721Receiver);
 };

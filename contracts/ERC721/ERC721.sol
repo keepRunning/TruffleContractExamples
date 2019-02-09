@@ -29,13 +29,14 @@ contract ERC721 is IERC721, ERC165 {
      *  '{:x}'.format(res)
      */
 
-    uint32 private constant _PREMINTED_TOKEN_COUNT = 100;
+    uint32 internal constant _PREMINTED_TOKEN_COUNT = 100;
     event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
     event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
     event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
 
     constructor() public {
         registerInterface(_INTERFACE_ID_ERC721);
+        _premintTokens(msg.sender);
     }
 
     function balanceOf(address owner) public view returns (uint256 balance) {
@@ -43,9 +44,14 @@ contract ERC721 is IERC721, ERC165 {
         balance = _tokenCount[owner];
     }
 
+    /**
+     * @dev Gets the owner of the specified token ID
+     * @param tokenId uint256 ID of the token to query the owner of
+     * @return address currently marked as the owner of the given token ID
+     */
     function ownerOf(uint256 tokenId) public view returns (address owner) {
         // require(tokenId != 0);
-        require(_tokenOwner[tokenId] != address(0));
+        require(_tokenOwner[tokenId] != address(0), "Token not assigned");
         owner = _tokenOwner[tokenId];
     }
 
@@ -80,7 +86,7 @@ contract ERC721 is IERC721, ERC165 {
     /**
      * @dev Sets or unsets the approval of a given operator
      * An operator is allowed to transfer all tokens of the sender on their behalf
-     * @param to operator address to set the approval
+     * @param operator operator address to set the approval
      * @param approved representing the status of the approval to be set
      */
     function setApprovalForAll(address operator, bool approved) public {
@@ -149,7 +155,7 @@ contract ERC721 is IERC721, ERC165 {
         return _tokenOwner[tokenId] != address(0);
     }
 
-    function _validateTransfer(address from, address to, uint256 tokenId) internal {
+    function _validateTransfer(address from, address to, uint256 tokenId) internal view {
         address owner = _tokenOwner[tokenId];
         require(from == owner);
         require(to != address(0));
@@ -159,9 +165,10 @@ contract ERC721 is IERC721, ERC165 {
     function _doTransfer(address from, address to, uint256 tokenId) internal {
         _tokenOwner[tokenId] = to;
         _tokenCount[from]--;
+        _tokenCount[to]++;
     }
 
-    function _isContract(address addr) internal returns (bool) {
+    function _isContract(address addr) internal view returns (bool) {
         uint256 size;
         assembly { size := extcodesize(addr) }
         return size > 0;
@@ -169,11 +176,12 @@ contract ERC721 is IERC721, ERC165 {
 
     function _isERC721Received(address from, address to, uint256 tokenId, bytes memory data) internal returns (bool) {
         bytes4 retval = IERC721Receiver(to).onERC721Received(msg.sender, from, tokenId, data);
+        return retval == _ERCReceivingContractCode;
     }
 
     function _mint(address to, uint256 tokenId) internal {
-        require(to != address(0));
-        require(_tokenOwner[tokenId] == address(0));
+        require(to != address(0), 'Invalid "to" address');
+        require(_tokenOwner[tokenId] == address(0), 'Already assigned');
 
         _tokenOwner[tokenId] = to;
         _tokenCount[to]++;
@@ -181,9 +189,9 @@ contract ERC721 is IERC721, ERC165 {
         emit Transfer(address(0), to, tokenId);
     }
 
-    function _premintTokens() internal {
+    function _premintTokens(address to) internal {
         for(uint32 i = 1; i <= _PREMINTED_TOKEN_COUNT; i++) {
-            _mint(msg.sender, i);
+            _mint(to, i);
         }
     }
 }
