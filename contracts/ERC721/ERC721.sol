@@ -93,6 +93,8 @@ contract ERC721 is IERC721, ERC165 {
         require(operator != msg.sender);
         require(operator != address(0));
         _tokenApprovalOperator[msg.sender][operator] = approved;
+
+        emit ApprovalForAll(msg.sender, operator, approved);
     }
 
     /**

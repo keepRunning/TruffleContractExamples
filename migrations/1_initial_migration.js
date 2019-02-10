@@ -10,6 +10,7 @@ var PayingContract = artifacts.require("./PayingContract.sol");
 var ERC721 = artifacts.require("./ERC721/ERC721.sol");
 var ERC721Testable = artifacts.require("./ERC721/ERC721Testable.sol");
 var ERC721Receiver = artifacts.require("ERC721/ERC721Receiver.sol");
+var ERC721ReceiverTestable = artifacts.require("ERC721/ERC721ReceiverTestable.sol");
 
 module.exports = function(deployer) {
   deployer.deploy(Migrations);
@@ -26,4 +27,5 @@ module.exports = function(deployer) {
   // deployer.deploy(ERC721);
   deployer.deploy(ERC721Testable);
   deployer.deploy(ERC721Receiver);
+  deployer.deploy(ERC721ReceiverTestable, true);
 };
