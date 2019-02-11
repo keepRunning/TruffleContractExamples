@@ -140,9 +140,9 @@ contract ERC721 is IERC721, ERC165 {
     ///  checks if `_to` is a smart contract (code size > 0). If so, it calls
     ///  `onERC721Received` on `_to` and throws if the return value is not
     ///  `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`.
-    /// @param _from The current owner of the NFT
-    /// @param _to The new owner
-    /// @param _tokenId The NFT to transfer
+    /// @param from The current owner of the NFT
+    /// @param to The new owner
+    /// @param tokenId The NFT to transfer
     /// @param data Additional data with no specified format, sent in call to `_to`
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory data) public {
         _validateTransfer(from, to, tokenId);
