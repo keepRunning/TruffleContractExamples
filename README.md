@@ -3,8 +3,10 @@ Contracts in truffle
 
 A set of practice ethereum contracts which can be tested using truffle suite. Ganache has to be run to be able to test these.
 
-For local testing:
+To run unit tests:
 npm run test:local
+or
+truffle test --network ganache
 
-For testing on servr with ganache-cli:
+For unit test with coverage with ganache-cli:
 npm run test
