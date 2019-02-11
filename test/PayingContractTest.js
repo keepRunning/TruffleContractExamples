@@ -1,10 +1,10 @@
-const PayingContract = artifacts.require('./PayingContract.sol');
-const PayableContract = artifacts.require('./PayableContract.sol');
+let PayingContract = artifacts.require('./PayingContract.sol');
+let PayableContract = artifacts.require('./PayableContract.sol');
 
 contract('Paying contract', function (accounts) {
   it('should do its stuff', async () => {
-    const payableContractPromise = PayableContract.deployed();
-    const payingContractPromise = PayingContract.deployed();
+    let payableContractPromise = PayableContract.deployed();
+    let payingContractPromise = PayingContract.deployed();
     await Promise.all([payableContractPromise, payingContractPromise]);
     let payableContract;
     let payingContract;
@@ -16,7 +16,7 @@ contract('Paying contract', function (accounts) {
     assert.equal(newBal, 20);
 
     await payingContract.payPayableContract(payableContract.address, 10);
-    const res = await payableContract.getBalance();
+    let res = await payableContract.getBalance();
     assert.equal(res, 10);
 
     newBal = await web3.eth.getBalance(payingContract.address);

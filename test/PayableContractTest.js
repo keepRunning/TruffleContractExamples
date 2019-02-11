@@ -1,9 +1,9 @@
-const PayableContract = artifacts.require('./PayableContract.sol');
+let PayableContract = artifacts.require('./PayableContract.sol');
 
 contract('PayableContract', function (accounts) {
   it('should have zero balance', async () => {
-    const instance = await PayableContract.deployed();
-    const bal = await instance.getBalance();
+    let instance = await PayableContract.deployed();
+    let bal = await instance.getBalance();
     console.log('bal', bal);
     assert.equal(bal, 0);
   });
@@ -21,9 +21,9 @@ contract('PayableContract', function (accounts) {
   });
 
   it('should have more balance', async () => {
-    const instance = await PayableContract.deployed();
+    let instance = await PayableContract.deployed();
     await instance.send(10, { from: accounts[0] });
-    const bal = await instance.getBalance();
+    let bal = await instance.getBalance();
     console.log('bal', bal);
     assert.equal(bal, 10);
   });
