@@ -1,24 +1,25 @@
-var Migrations = artifacts.require("./Migrations.sol");
-var Hashtable = artifacts.require("./Hashtable.sol");
-var MathLibrary = artifacts.require("./MathLibrary.sol");
-var Math1 = artifacts.require("./Math.sol");
-var SimpleModifier = artifacts.require("./SimpleModifier.sol");
-var InheritanceParent = artifacts.require("./InheritanceParent.sol");
-var InheritanceChild = artifacts.require("./InheritanceChild.sol");
-var PayableContract = artifacts.require("./PayableContract.sol");
-var PayingContract = artifacts.require("./PayingContract.sol");
-var ERC721 = artifacts.require("./ERC721/ERC721.sol");
-var ERC721Testable = artifacts.require("./ERC721/ERC721Testable.sol");
-var ERC721Receiver = artifacts.require("ERC721/ERC721Receiver.sol");
-var ERC721ReceiverTestable = artifacts.require("ERC721/ERC721ReceiverTestable.sol");
+const Migrations = artifacts.require('./Migrations.sol');
+const Hashtable = artifacts.require('./Hashtable.sol');
+const MathLibrary = artifacts.require('./MathLibrary.sol');
+const Math1 = artifacts.require('./Math.sol');
+const SimpleModifier = artifacts.require('./SimpleModifier.sol');
+const InheritanceParent = artifacts.require('./InheritanceParent.sol');
+const InheritanceChild = artifacts.require('./InheritanceChild.sol');
+const PayableContract = artifacts.require('./PayableContract.sol');
+const PayingContract = artifacts.require('./PayingContract.sol');
+const ERC721Testable = artifacts.require('./ERC721/ERC721Testable.sol');
+const ERC721Receiver = artifacts.require('ERC721/ERC721Receiver.sol');
+const ERC721ReceiverTestable = artifacts.require('ERC721/ERC721ReceiverTestable.sol');
 
-module.exports = function(deployer) {
+module.exports = function (deployer) {
   deployer.deploy(Migrations);
   deployer.deploy(Hashtable);
-  deployer.deploy(MathLibrary).then(() => {
-    deployer.deploy(Math1);
-  });
-  //deployer.link(MathLibrary, Math1);
+  deployer.deploy(MathLibrary)
+    .then(() => {
+      deployer.deploy(Math1);
+    })
+    .catch((ex) => { });
+  // deployer.link(MathLibrary, Math1);
   deployer.deploy(SimpleModifier);
   deployer.deploy(InheritanceParent);
   deployer.deploy(InheritanceChild);
