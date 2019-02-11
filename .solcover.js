@@ -4,5 +4,6 @@ module.exports = {
     compileCommand: 'node --max-old-space-size=4096 ../node_modules/.bin/truffle compile --network coverage',
     skipFiles: [
         'contracts/PayingContract.sol',
+        './coverageEnv/contracts/PayingContract.sol',
     ]
 }
