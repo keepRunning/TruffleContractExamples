@@ -1,7 +1,6 @@
 pragma solidity >=0.4.23 <0.6.0;
 
 import "contracts/InheritanceParent.sol";
-import "contracts/MathLibrary.sol";
 
 contract InheritanceChild is InheritanceParent {
     string public childVal  = 'BASE_VALUE_CHILD';

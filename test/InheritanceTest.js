@@ -5,6 +5,7 @@ contract('InheritanceTest', (accounts) => {
   it('should test parent', async () => {
     let instance = await InheritanceParent.deployed();
     let res = await instance.getString();
+    console.log('should test parent - res', res, await res);
     assert.equal(await res, 'BASE_VALUE');
 
     await instance.setString('NEW_VALUE');

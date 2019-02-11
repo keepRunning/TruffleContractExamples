@@ -6,7 +6,6 @@ contract('SimpleModifier', function (accounts) {
   it('should return true', async () => {
     let instance = await SimpleModifier.deployed();
     let res = await instance.doSomething({ from: addr1 });
-    console.log('res1', res);
     assert.isTrue(res);
   });
 
@@ -16,7 +15,6 @@ contract('SimpleModifier', function (accounts) {
     try {
       result = await instance.doSomething({ from: addr2 });
     } catch (e) {
-      console.log(e);
       result = false;
     }
     assert.isFalse(result);
