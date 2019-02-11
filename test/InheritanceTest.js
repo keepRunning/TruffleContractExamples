@@ -4,13 +4,12 @@ let InheritanceChild = artifacts.require('./InheritanceChild');
 contract('InheritanceTest', (accounts) => {
   it('should test parent', async () => {
     let instance = await InheritanceParent.deployed();
-    let res = await instance.getString();
-    console.log('should test parent - res', res, await res);
+    let res = await instance.getParentString();
     assert.equal(await res, 'BASE_VALUE');
 
     await instance.setString('NEW_VALUE');
 
-    let res2 = await instance.getString();
+    let res2 = await instance.getParentString();
     assert.equal(res2, 'NEW_VALUE');
   });
 
@@ -22,7 +21,7 @@ contract('InheritanceTest', (accounts) => {
 
     await instance.setString('NEW_VALUE');
 
-    let res2 = await instance.getString();
+    let res2 = await instance.getParentString();
     assert.equal(res2, 'NEW_VALUE');
 
     let res3 = await instance.getChildString();

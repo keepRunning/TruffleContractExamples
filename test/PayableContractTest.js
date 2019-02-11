@@ -1,11 +1,15 @@
 let PayableContract = artifacts.require('./PayableContract.sol');
 
-contract('PayableContract', function (accounts) {
+contract('PayableContract', (accounts) => {
   it('should have zero balance', async () => {
     let instance = await PayableContract.deployed();
-    let bal = await instance.getBalance();
-    console.log('bal', bal);
-    assert.equal(bal, 0);
+    return instance.getBalance()
+    .then((bal) => {
+      assert.equal(bal, 0);
+    })
+    .catch((err) => {
+      console.log(err);
+    });    
   });
 
   it('should have zero balance - promise based', async () => {

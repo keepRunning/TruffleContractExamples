@@ -3,7 +3,7 @@ pragma solidity >=0.4.23 <0.6.0;
 contract InheritanceParent {
     string public val = 'BASE_VALUE';
 
-    function getString() public view returns (string memory) {
+    function getParentString() public view returns (string memory) {
         return val;
     }
 
