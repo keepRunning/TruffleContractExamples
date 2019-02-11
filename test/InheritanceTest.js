@@ -5,10 +5,10 @@ contract('InheritanceTest', (accounts) => {
   it('should test parent', async () => {
     let instance = await InheritanceParent.deployed();
     return instance.getParentString().then((res) => {
-      assert.equal(await res, 'BASE_VALUE');
-      return await instance.setString('NEW_VALUE');
+      assert.equal(res, 'BASE_VALUE');
+      return instance.setString('NEW_VALUE');
     }).then(() => {
-      return await instance.getParentString();
+      return instance.getParentString();
     }).then((res2) => {
       assert.equal(res2, 'NEW_VALUE');
     });

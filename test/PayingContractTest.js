@@ -1,5 +1,6 @@
 let PayingContract = artifacts.require('./PayingContract.sol');
 let PayableContract = artifacts.require('./PayableContract.sol');
+const truffleAssert = require('truffle-assertions');
 
 contract('Paying contract', function (accounts) {
   it('should do its stuff', async () => {
@@ -18,14 +19,7 @@ contract('Paying contract', function (accounts) {
       })
       .then((newBal) => {
         assert.equal(newBal, 10);
-        return (() => {
-          try {
-            await PayingContractInstance.payPayableContract(payableContractInstance.address, 20);
-            assert(false);
-          } catch (e) {
-            assert(true);
-          }
-        });
+        return truffleAssert.reverts(PayingContractInstance.payPayableContract(payableContractInstance.address, 20));
       });
   });
 });
