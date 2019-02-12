@@ -1,5 +1,5 @@
 let PayingContract = artifacts.require('./PayingContract.sol');
-let PayableContract = artifacts.require('./PayableContract.sol');
+// let PayableContract = artifacts.require('./PayableContract.sol');
 // const truffleAssert = require('truffle-assertions');
 
 contract('Paying contract', function (accounts) {
