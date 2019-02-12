@@ -4,12 +4,12 @@ contract('PayableContract', (accounts) => {
   it('should have zero balance', async () => {
     let instance = await PayableContract.deployed();
     return instance.getBalance()
-    .then((bal) => {
-      assert.equal(bal, 0);
-    })
-    .catch((err) => {
-      console.log(err);
-    });    
+      .then((bal) => {
+        assert.equal(bal, 0);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
 
   it('should have zero balance - promise based', async () => {
