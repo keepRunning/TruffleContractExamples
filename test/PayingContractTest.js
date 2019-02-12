@@ -1,10 +1,10 @@
 let PayingContract = artifacts.require('./PayingContract.sol');
 let PayableContract = artifacts.require('./PayableContract.sol');
-const truffleAssert = require('truffle-assertions');
+// const truffleAssert = require('truffle-assertions');
 
 contract('Paying contract', function (accounts) {
   it('should do its stuff', async () => {
-    let payableContractInstance = await PayableContract.deployed();
+    // let payableContractInstance = await PayableContract.deployed();
     let PayingContractInstance = await PayingContract.deployed();
 
     await PayingContractInstance.send(20, { from: accounts[0] });

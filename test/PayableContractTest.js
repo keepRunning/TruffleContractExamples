@@ -29,7 +29,7 @@ contract('PayableContract', (accounts) => {
   //   return instance.send(10, { from: accounts[0] })
   //   .then(() => {
   //     return instance.getBalance();
-  //   })    
+  //   })
   //   .then((bal) => {
   //     assert.equal(bal, 10);
   //   });

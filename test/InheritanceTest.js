@@ -1,4 +1,4 @@
-let InheritanceParent = artifacts.require('./InheritanceParent');
+// let InheritanceParent = artifacts.require('./InheritanceParent');
 let InheritanceChild = artifacts.require('./InheritanceChild');
 
 contract('InheritanceTest', (accounts) => {
