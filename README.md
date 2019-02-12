@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.com/keepRunning/TruffleContractExamples.svg?branch=master)](https://travis-ci.com/keepRunning/TruffleContractExamples)
-
 [![Coverage Status](https://coveralls.io/repos/github/keepRunning/TruffleContractExamples/badge.svg)](https://coveralls.io/github/keepRunning/TruffleContractExamples)
 
 # TruffleContractExamples
